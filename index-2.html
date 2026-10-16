@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Form Elektronics Order</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --ink: #1f1f1f;
+    --muted: #6a6a6a;
+    --line: #cfcfcf;
+    --soft: #f3f3f3;
+    --accent: #1f1f1f;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  nav {
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem max(1.5rem, calc((100% - 60rem) / 2));
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover, nav a:focus-visible {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+    outline: none;
+  }
+  nav a:last-child { margin-left: auto; }
+
+  .page {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .pic {
+    width: 15rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .pic img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;   /* gambar mengisi kotak tanpa gepeng */
+  border-radius: 0;    /* tetap persegi */
+  background: var(--soft);
+}
+  .pic input[type=file] {
+    margin-top: 1rem;
+    width: 100%;
+    font-size: .8rem;
+    color: var(--muted);
+  }
+
+  form {
+    flex: 1;
+    min-width: 20rem;
+    padding: 1.75rem;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .row { display: flex; flex-direction: column; margin-bottom: 1.25rem; }
+  .row > label.t { font-size: .85rem; color: var(--muted); margin-bottom: .35rem; }
+
+  .row input[type=text], .row input[type=tel], .row input[type=email],
+  .row select, .row textarea,
+  table input, table select {
+    width: 100%;
+    font: inherit;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    padding: .55rem .7rem;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .row textarea { resize: vertical; }
+  .row input:focus, .row select:focus, .row textarea:focus,
+  table input:focus, table select:focus {
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: 0 0 0 2px var(--ink);
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+  table td { border: 1px solid var(--line); padding: .5rem .7rem; }
+  table td:first-child { background: var(--soft); width: 9rem; }
+
+  .note { margin: -.5rem 0 1.4rem; font-size: .85rem; color: var(--muted); }
+
+  .chk { margin: 0 0 1.4rem; }
+  .chk label { display: block; padding: .15rem 0; }
+  .chk label:has(input[type=checkbox]) { margin-bottom: .5rem; }
+  .chk input[type=checkbox] { accent-color: var(--ink); margin-right: .6rem; }
+
+        
+  button {
+    background: #fff;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 0;
+    padding: .7rem 1.8rem;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  button:hover, button:focus-visible { background: var(--ink); color: #fff; outline: none; }
+  button:focus-visible { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--ink); }
+</style>
+</head>
+<body>
+<nav>
+  <a href="#">Home</a><a href="#">Generate Link</a><a href="#">Transaction History</a><a href="#">Policy</a><a href="#">Logout</a>
+</nav>
+
+<div class="page">
+  <div class="pic">
+    <img src="asset/img/Asus ROG Strix G513GW.jpg">
+  </div>
+
+  <form id="orderForm" action="../Praktikum 2 Hasil pemesanan barang - Fajra/index.html" method="GET">
+    <div class="row"><span class="t" style="font-size:.85rem;color:var(--muted);margin-bottom:.35rem">Item information</span>
+      <table>
+        <tr>
+          <td>Nama Barang</td>
+          <td><input type="text" name="nama_barang" aria-label="Nama Barang" required></td>
+        </tr>
+        <tr>
+          <td>Kategori</td>
+          <td>
+            <select name="kategori" aria-label="Kategori">
+              <option value="mobile phone">Mobile Phone</option>
+              <option value="laptop">Laptop</option>
+              <option value="smart tv">Smart TV</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Jumlah</td>
+          <td><input type="number" name="jumlah" min="1" value="1" aria-label="Jumlah"></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row"><label class="t" for="description">Description</label>
+      <textarea id="description" name="description" rows="5"></textarea></div>
+
+    <div class="row"><label class="t" for="payment">Payment method</label>
+      <select id="payment" name="payment method">
+        <option>Transfer virtual account</option><option>E-Wallet</option><option>Credit card</option>
+      </select></div>
+
+    <div class="row"><label class="t" for="holder">Name</label>
+      <input type="text" id="holder" name="holder" placeholder="Name Here"></div>
+
+    <div class="row"><label class="t" for="address">Address</label>
+      <input type="text" id="address" name="address" placeholder="Fill Here"></div>
+
+    <div class="row"><label class="t" for="transaction">Transaction amount</label>
+      <select id="transaction" name="transaction">
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+      </select></div>
+    <p class="note">* if the transaction is for 3 person, choose 3 from the drop-down list</p>
+
+    <div class="chk">
+      <p class="note">Please choose your contact information</p>
+      <label><input type="checkbox" name="sendphone" value="1" checked>Sent to Mobile phone</label>
+      <div class="row"><label class="t" for="phone">Mobile number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Fill here"></div>
+
+      <label><input type="checkbox" name="sendemail" value="1" checked>Sent to Email</label>
+      <div class="row"><label class="t" for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Fill here"></div>
+    </div>
+
+    <button type="submit">Order now</button>
+  </form>
+</div>
+</body>
+</html>

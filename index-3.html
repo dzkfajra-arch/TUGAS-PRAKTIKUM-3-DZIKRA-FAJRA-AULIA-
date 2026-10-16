@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hasil Pemesanan Barang</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --ink: #1f1f1f;
+    --muted: #6a6a6a;
+    --line: #cfcfcf;
+    --soft: #f3f3f3;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  
+  nav {
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem max(1.5rem, calc((100% - 44rem) / 2));
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover, nav a:focus-visible {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+    outline: none;
+  }
+
+  .page {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  .form {
+    padding: 1.75rem;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .row { display: flex; flex-direction: column; margin-bottom: 1.25rem; }
+  .row > label.t { font-size: .85rem; color: var(--muted); margin-bottom: .35rem; }
+
+  .row input, .row textarea {
+    width: 100%;
+    font: inherit;
+    color: var(--ink);
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 0;
+    padding: .55rem .7rem;
+    resize: none;
+    cursor: default;
+  }
+  .row input:focus, .row textarea:focus {
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: 0 0 0 2px var(--ink);
+  }
+
+  .note { margin: 0 0 .6rem; font-size: .85rem; color: var(--muted); }
+  .chk { margin: 0 0 1.4rem; }
+  .chk label { display: block; padding: .15rem 0; margin-bottom: .5rem; }
+  .chk input[type=checkbox] { accent-color: var(--ink); margin-right: .6rem; }
+
+  .actions {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  button {
+    background: #fff;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 0;
+    padding: .7rem 1.8rem;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  button:hover, button:focus-visible { background: var(--ink); color: #fff; outline: none; }
+  button:focus-visible { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--ink); }
+  button.utama { background: var(--ink); color: #fff; }
+  button.utama:hover, button.utama:focus-visible { background: #fff; color: var(--ink); }
+</style>
+</head>
+<body>
+    <center>
+        <h1>Toko Online Dzikra Fajra Aulia</h1>
+        <p><i>Terima kasih telah memesan!</i></p>
+    </center>
+
+    <center>
+        <h2>PESANAN BERHASIL</h2>
+        <p>Terima kasih telah melakukan pemesanan</p>
+        <p>Kami menghargai kepercayaan Anda dalam memilih produk kami</p>
+    </center>
+    
+<nav>
+  <a href="#">Home</a><a href="#">Register</a><a href="#">Policy</a><a href="#">About</a>
+</nav>
+
+<div class="page">
+  <div class="form">
+    <form id="orderForm" action="../Praktikum 2 Pemesanan barang - Fajra/index.html" method="GET">
+      <div class="row"><label class="t" for="nama_barang">Nama Barang</label>
+        <input type="text" id="nama_barang" name="nama_barang" readonly></div>
+
+      <div class="row"><label class="t" for="kategori">Kategori</label>
+        <input type="text" id="kategori" name="kategori" readonly></div>
+
+      <div class="row"><label class="t" for="jumlah">Jumlah</label>
+        <input type="text" id="jumlah" name="jumlah" readonly></div>
+
+      <div class="row"><label class="t" for="description">Description</label>
+        <textarea id="description" name="description" rows="4" readonly></textarea></div>
+
+      <div class="row"><label class="t" for="payment_method">Payment method</label>
+        <input type="text" id="payment_method" name="payment_method" readonly></div>
+
+      <div class="row"><label class="t" for="nama">Name</label>
+        <input type="text" id="nama" name="nama" readonly></div>
+
+      <div class="row"><label class="t" for="alamat">Address</label>
+        <input type="text" id="alamat" name="alamat" readonly></div>
+
+      <div class="row"><label class="t" for="transaction">Transaction amount</label>
+        <input type="text" id="transaction" name="transaction" readonly></div>
+
+      <div class="chk">
+        <p class="note">Contact information</p>
+        <label><input type="checkbox" id="sendphone" name="sendphone" disabled>Sent to Mobile phone</label>
+        <div class="row" id="row-phone"><label class="t" for="phone">Mobile number</label>
+          <input type="tel" id="phone" name="phone" readonly></div>
+
+        <label><input type="checkbox" id="sendemail" name="sendemail" disabled>Sent to Email</label>
+        <div class="row" id="row-email"><label class="t" for="email">Email</label>
+          <input type="text" id="email" name="email" readonly></div>
+      </div>
+
+      <div class="actions">
+        <button type="button" onclick="history.back()">Edit order</button>
+        <button type="submit" class="utama">Confirm</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  var p = new URLSearchParams(location.search);
+
+  ['nama_barang', 'kategori', 'jumlah', 'description',
+   'payment_method', 'nama', 'alamat', 'transaction',
+   'phone', 'email'].forEach(function (key) {
+    var el = document.getElementById(key);
+    if (el) el.value = p.get(key) || '';
+  });
+
+  var sendPhone = p.has('sendphone');
+  var sendEmail = p.has('sendemail');
+
+  document.getElementById('sendphone').checked = sendPhone;
+  document.getElementById('sendemail').checked = sendEmail;
+
+  document.getElementById('row-phone').style.display = sendPhone ? '' : 'none';
+  document.getElementById('row-email').style.display = sendEmail ? '' : 'none';
+</script>
+</body>
+</html>
